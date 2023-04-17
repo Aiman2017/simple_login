@@ -1,17 +1,20 @@
 <?php
 session_start();
 define('ROOTPATH', __DIR__ . DIRECTORY_SEPARATOR);
-function show($stuff) {
+function show($stuff)
+{
     echo "<pre>";
     var_dump($stuff);
-    exit();
+
 }
 
-function redirect($path) {
+function redirect($path)
+{
     header("Location: ${path}.php");
 }
 
-function isLoggedIn() {
+function isLoggedIn()
+{
     if (isset($_SESSION['USER'])) {
         return true;
     }
@@ -22,11 +25,12 @@ function logout()
 {
     if (isset($_SESSION['USER'])) {
         unset($_SESSION['USER']);
-        redirect('login');
+        redirect('../views/login');
     }
 }
 
-function auth($auth) {
+function auth($auth)
+{
     $_SESSION['USER'] = $auth;
 }
 
