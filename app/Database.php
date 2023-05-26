@@ -67,9 +67,13 @@ class Database
         return self::query($query, $data);
     }
 
-    public static function readAll($table, $data = [])
+      public static function readAll($table, $data = [])
     {
         $query = "SELECT * FROM $table";
-        return self::query($query);
+        $result = self::query($query);
+        if (is_array($result)) {
+            return $result;
+        }
+         redirect('signin');
     }
 }
